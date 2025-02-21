@@ -1,0 +1,11 @@
+.time-btn {
+    margin: 5px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.selected {
+    background-color: #4CAF50;
+    color: white;
+}
