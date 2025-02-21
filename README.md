@@ -18,7 +18,12 @@ python manage.py migrate
 python manage.py createsuperuser
 ```
 
-### Starta servern:
+### Starta servern (localhost):
 ```
 python manage.py runserver
+```
+
+### Starta servern
+```
+python manage.py runserver 0.0.0.0:8000
 ```
