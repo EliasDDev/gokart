@@ -1,4 +1,4 @@
-# Skolprojekt – Utveckling av en Go-Kart-bokningswebbplats med Django som backend.
+# Skolprojekt – Go-Kart-bokningswebbplats med Django som backend.
 
 ### Skapa virtual environment och installera Django:
 ```
@@ -18,7 +18,12 @@ python manage.py migrate
 python manage.py createsuperuser
 ```
 
-### Starta servern:
+### Starta servern (localhost):
 ```
 python manage.py runserver
+```
+
+### Starta servern
+```
+python manage.py runserver 0.0.0.0:8000
 ```
