@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <form method="POST" action="{% url 'book_slot' %}">
+        {% csrf_token %}
+
+        <input type="text" name="name" placeholder="Name">
+        <input type="email" name="email" placeholder="Email">
+        <input type="date" name="date" id="datePicker">
+
+        <div id="timeSlots"></div>
+
+        <!-- Hidden input to store the selected time -->
+        <input type="hidden" name="time" id="selectedTime">
+
+        <button type="submit">Add Customer</button>
+    </form>
+
+    <script>
+        let selectedTime = null; // Store selected time
+
+        // Fetch available slots when date changes
+        document.getElementById("datePicker").addEventListener("change", function () {
+            fetchAvailableSlots(this.value);
+        });
+
+        // Function to Fetch Available Time Slots from Django
+        function fetchAvailableSlots(date) {
+            $.get(`/get-available-slots/?date=${date}`, function (data) {
+                let times = data.slots;
+                let html = times.length > 0
+                    ? times.map(time => `<button type="button" class="time-btn" onclick="selectTime('${time}')">${time}</button>`).join("")
+                    : "<p>No available slots</p>";
+
+                document.getElementById("timeSlots").innerHTML = html;
+            });
+        }
+
+        function selectTime(time) {
+            selectedTime = time; // Store selected time
+            document.getElementById("selectedTime").value = time; // Update hidden input
+
+            // Highlight selected button
+            document.querySelectorAll(".time-btn").forEach(btn => btn.classList.remove("selected"));
+            event.target.classList.add("selected");
+        }
+    </script>
+
+<style>
+    .time-btn {
+        margin: 5px;
+        padding: 10px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .selected {
+        background-color: #4CAF50;
+        color: white;
+    }
+</style>
+</body>
+</html>
