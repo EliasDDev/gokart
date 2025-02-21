@@ -1,27 +1,31 @@
-let selectedTime = null; // Store selected time
+// Store date element
+let dateElement = document.getElementById('datePicker');
 
-// Fetch available slots when date changes
-document.getElementById("datePicker").addEventListener("change", function () {
-    fetchAvailableSlots(this.value);
-});
+// Set date to a default value.
+dateElement.valueAsDate = new Date();
+fetchAvailableSlots(dateElement.value);
 
-// Function to Fetch Available Time Slots from Django
-function fetchAvailableSlots(date) {
-    $.get(`/get-available-slots/?date=${date}`, function (data) {
-        let times = data.slots;
-        let html = times.length > 0
-            ? times.map(time => `<button type="button" class="time-btn" onclick="selectTime('${time}')">${time}</button>`).join("")
-            : "<p>No available slots</p>";
+// Fetch available slots when date changes.
+dateElement.addEventListener("change", () => fetchAvailableSlots(dateElement.value));
 
-        document.getElementById("timeSlots").innerHTML = html;
+// Function to fetch available time slots from Django.
+function fetchAvailableSlots(dataValue) {
+    $.get(`/get-available-slots/?date=${dataValue}`, function (dataValue) {
+        let timeSlots = dataValue.slots;
+        if (timeSlots.length > 0) {
+            let htmlButton = timeSlots.map(time => `<button type="button" class="time-btn" onclick="selectTime('${time}')">${time}</button>`).join("");
+            document.getElementById("timeSlots").innerHTML = htmlButton;
+        } else {
+            document.getElementById("timeSlots").innerHTML = "<p>No available slots</p>";
+        }
     });
 }
 
 function selectTime(time) {
-    selectedTime = time; // Store selected time
-    document.getElementById("selectedTime").value = time; // Update hidden input
+    // Update selected time.
+    document.getElementById("selectedTime").value = time;
 
-    // Highlight selected button
+    // Highlight selected time slot.
     document.querySelectorAll(".time-btn").forEach(btn => btn.classList.remove("selected"));
     event.target.classList.add("selected");
 }
