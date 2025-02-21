@@ -1,4 +1,4 @@
-# Skolprojekt – Utveckling av en Go-Kart-bokningswebbplats med Django som backend.
+# Skolprojekt – Go-Kart-bokningswebbplats med Django som backend.
 
 ### Skapa virtual environment och installera Django:
 ```
