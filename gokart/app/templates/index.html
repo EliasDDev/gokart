@@ -28,6 +28,12 @@
         <!-- Hidden input to store selected time slot. -->
         <input type="hidden" name="time" id="selectedTime">
 
+        <!-- Select the number of people (drivers) -->
+        <label for="numPeople">Antal förare:</label>
+        <input type="number" id="numPeople" name="num_people" min="1" max="10" value="1" required>
+
+        <div id="gokartContainer"></div> <!-- This will hold the dynamically created Gokart selection inputs -->
+
         <div id="timeSlots"></div>
 
         <button type="submit">Book Slot</button>

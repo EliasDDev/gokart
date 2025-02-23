@@ -1,9 +1,17 @@
-# Skolprojekt – Go-Kart-bokningswebbplats med Django som backend.
+# Skolprojekt - Go-Kart-bokningswebbplats med Django som backend.
 
 ### Skapa virtual environment och installera Django:
+#### Windows
 ```
 python -m venv venv
 .\venv\Scripts\activate.bat
+pip install django
+```
+
+#### Ubuntu
+```
+python3 -m venv venv
+source venv/bin/activate
 pip install django
 ```
 

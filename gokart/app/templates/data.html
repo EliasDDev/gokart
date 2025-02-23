@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    {% regroup bookings by date as bookings_by_date %}
+
+    <div class="container mt-5">
+        {% for day in bookings_by_date %}
+            <h2 class="text-center my-4">Bookings for {{ day.grouper|date:"Y-m-d" }}</h2>
+    
+            <div class="d-flex justify-content-center">
+                <table class="table table-bordered table-striped w-75">
+                    <thead class="table-dark">
+                        <tr>
+                            <th class="text-center">Namn</th>
+                            <th class="text-center">Email</th>
+                            <th class="text-center">Tid</th>
+                            <th class="text-center">Förare</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for booking in day.list %}
+                            <tr>
+                                <td class="text-center">{{ booking.customer.name }}</td>
+                                <td class="text-center">{{ booking.customer.email }}</td>
+                                <td class="text-center">{{ booking.time|time:"H:i" }}</td>
+                                <td class="text-center">
+                                    <ul class="list-unstyled">
+                                        {% for driver in booking.drivers_set.all %}
+                                            <li>{{ driver.gokart.name }}</li>
+                                        {% empty %}
+                                            <li>No drivers assigned</li>
+                                        {% endfor %}
+                                    </ul>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
