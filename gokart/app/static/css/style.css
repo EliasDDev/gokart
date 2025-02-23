@@ -5,6 +5,51 @@
 }
 
 .selected {
-    background-color: lightblue;
+    background-color: #4CAF50;
     color: white;
+}
+
+/* Ensure full-page height and remove default margins */
+html, body {
+    height: 100%;
+    margin: 0;
+    background-color: #f8f9fa; /* Keeps the bg-light effect */
+}
+
+/* Center the form container */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Makes sure it takes full screen height */
+}
+
+/* Style the form */
+.form-card { 
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 350px; /* Responsive width */
+}
+
+/* Style the submit button */
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Button hover effect */
+.submit-btn:hover {
+    background-color: #0056b3; 
+    transform: scale(1.05);
 }

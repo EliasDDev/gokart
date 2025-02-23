@@ -16,7 +16,10 @@ def get_available_slots(request):
     date = request.GET.get("date")
 
     # Define possible time slots
-    all_slots = [time(10, 00), time(11, 00), time(13, 00), time(14, 00)]
+    all_slots = [time(10, 00), time(10, 30),
+                 time(11, 00), time(11, 30),
+                 time(13, 00), time(13, 30),
+                 time(14, 00), time(14, 30)]
 
     # Get already booked slots for the selected date
     booked_slots = Booking.objects.filter(date=date).values_list("time", flat=True)

@@ -16,28 +16,36 @@
 
     <link rel="stylesheet" href="../static/css/style.css">
 </head>
-<body>
-    <!-- Form for booking time. -->
-    <form method="POST" action="{% url 'book_slot' %}">
-        {% csrf_token %}
+<body class="bg-light">
+    <div class="container-fluid p-4 bg-dark text-white text-center">
+        <h1>Gokart Väst</h1>
+    </div>
 
-        <input type="text" name="name" placeholder="Name" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="date" name="date" id="datePicker" required>
-        
-        <!-- Hidden input to store selected time slot. -->
-        <input type="hidden" name="time" id="selectedTime">
+    <div class="form-container">
+        <div class="form-card">
 
-        <!-- Select the number of people (drivers) -->
-        <label for="numPeople">Antal förare:</label>
-        <input type="number" id="numPeople" name="num_people" min="1" max="10" value="1" required>
+            <!-- Form for booking time. -->
+          <form method="POST" action="{% url 'book_slot' %}">
+            {% csrf_token %}
+            <h3 class="text-center">Välj ett datum</h3>
+            <input type="text" name="name" class="form-control mb-2" placeholder="Name">
+            <input type="email" name="email" class="form-control mb-2" placeholder="Email">
+            <input type="date" name="date" id="datePicker" class="form-control mb-2">
+    
+            <div id="timeSlots" class="d-flex flex-wrap justify-content-center gap-2"></div>
+    
+            <input type="hidden" name="time" id="selectedTime">
+    
+            <!-- Select the number of people (drivers) -->
+            <label for="numPeople">Antal förare:</label>
+            <input type="number" id="numPeople" name="num_people" min="1" max="10" value="1" required>
 
-        <div id="gokartContainer"></div> <!-- This will hold the dynamically created Gokart selection inputs -->
+            <div id="gokartContainer"></div>
 
-        <div id="timeSlots"></div>
-
-        <button type="submit">Book Slot</button>
-    </form>
+            <button type="submit" class="submit-btn">Nästa</button>
+          </form>
+        </div>
+    </div>
 
     <script src="../static/js/main.js"></script>
 </body>
