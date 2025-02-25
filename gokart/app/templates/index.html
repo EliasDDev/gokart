@@ -46,7 +46,11 @@
           </form>
         </div>
     </div>
-
+    <script>
+        // Sätter dagens datum som minsta tillåtna datum
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('datePicker').setAttribute('min', today);
+    </script>
     <script src="../static/js/main.js"></script>
 </body>
 </html>
