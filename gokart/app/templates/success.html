@@ -1,12 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Bokning Bekräftad</title>
+    <link rel="stylesheet" href="../static/css/style.css"> <!-- Länka till CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
-<body>
-    <h1>Success: Booking confirmed.</h1>
-    <a href="{% url 'home' %}">Gå tillbaka</a>
+<body class="success-page"> <!-- Klassen som gör hela sidan grön -->
+
+    <!-- Översta delen av sidan -->
+    <div class="container-fluid p-4 bg-dark text-white text-center">
+        <h1>Gokart Väst</h1>
+    </div>
+
+    <!-- Success-sidan som är centrerad -->
+    <div class="success-container">
+        <div class="success-icon">✅</div>
+        <h1 class="success-title">Bokning Bekräftad</h1>
+        <p>Din bokning har registrerats. Vi ses snart på Gokart Väst!</p>
+        <a href="{% url 'home' %}" class="btn btn-success mt-3">Gå tillbaka</a>
+    </div>
+
 </body>
 </html>

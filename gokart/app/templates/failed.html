@@ -1,12 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Bokning Misslyckades</title>
+    <link rel="stylesheet" href="../static/css/style.css"> <!-- Länka till CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
-<body>
-    <h1>Error: Failed to book slot.</h1>
-    <a href="{% url 'home' %}">Gå tillbaka</a>
+<body class="failed-page"> <!-- Klassen för failed-sidan -->
+
+    <!-- Översta delen av sidan med "Gokart Väst" -->
+    <div class="container-fluid p-4 bg-dark text-white text-center">
+        <h1>Gokart Väst</h1>
+    </div>
+
+    <!-- Failed-sidan som är centrerad -->
+    <div class="failed-container">
+        <div class="failed-icon">❌</div>
+        <h1 class="failed-title">Bokningen Misslyckades</h1>
+        <p>Någonting gick fel.</p>
+        <a href="{% url 'home' %}" class="btn btn-danger mt-3">Gå tillbaka</a>
+    </div>
+
 </body>
 </html>

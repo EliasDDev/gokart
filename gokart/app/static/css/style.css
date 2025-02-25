@@ -56,3 +56,103 @@ html, body {
     transform: scale(1.05);
 }
 
+/* För att göra hela sidan grön */
+.success-page {
+    background-color: #d4edda; /* Ljusgrön bakgrund för hela sidan */
+    margin: 0;
+    height: 100vh; /* Gör sidan fullhöjd */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Placera allt från toppen */
+    text-align: center;
+}
+
+/* Översta delen av sidan med "Gokart Väst" */
+.container-fluid {
+    margin-bottom: 20px; /* Lite avstånd under "Gokart Väst" */
+}
+
+/* Flexboxen för att centrera success-meddelandet */
+.success-container {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px; /* Maxbredd på rutan */
+    width: 100%; /* Gör rutan responsiv */
+    margin: 50px auto; /* Centrerar rutan och ger utrymme från toppen */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Centrera horisontellt och vertikalt */
+}
+
+/* Ikonens stil */
+.success-icon {
+    font-size: 50px;
+    color: #28a745; /* Grön färg för success */
+    margin-bottom: 20px; /* Utrymme mellan ikonen och texten */
+}
+
+/* Stilen för rubriken */
+.success-title {
+    color: #28a745; /* Grön färg för success */
+    margin-bottom: 15px; /* Utrymme under rubriken */
+}
+
+/* Stilen för knappen */
+.btn-success {
+    margin-top: 20px; /* Utrymme ovanför knappen */
+}
+
+/* För att göra hela sidan röd (failed) */
+.failed-page {
+    background-color: #f8d7da; /* Ljus röd bakgrund för hela sidan */
+    margin: 0;
+    height: 100vh; /* Gör sidan fullhöjd */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Placera allt från toppen */
+    text-align: center;
+}
+
+/* Flexboxen för att centrera failed-meddelandet */
+.failed-container {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px; /* Maxbredd på rutan */
+    width: 100%; /* Gör rutan responsiv */
+    margin: 50px auto; /* Centrerar rutan och ger utrymme från toppen */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Centrera horisontellt och vertikalt */
+}
+
+/* Ikonens stil för failed */
+.failed-icon {
+    font-size: 50px;
+    color: #dc3545; /* Röd färg för failed */
+    margin-bottom: 20px; /* Utrymme mellan ikonen och texten */
+}
+
+/* Stilen för rubriken (för failed) */
+.failed-title {
+    color: #dc3545; /* Röd färg för failed */
+    margin-bottom: 15px; /* Utrymme under rubriken */
+}
+
+/* Stilen för knappen (för failed) */
+.btn-danger {
+    margin-top: 20px; /* Utrymme ovanför knappen */
+    background-color: #dc3545; /* Röd bakgrund för failed */
+    border-color: #dc3545; /* Röd kantfärg för failed */
+}
+
+/* Hover-effekt för failed-knappen */
+.btn-danger:hover {
+    background-color: #c82333; /* Mörkare röd vid hover */
+    border-color: #bd2130; /* Mörkare kant vid hover */
+}
