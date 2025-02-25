@@ -27,14 +27,14 @@
             <!-- Form for booking time. -->
           <form method="POST" action="{% url 'book_slot' %}">
             {% csrf_token %}
-            <h3 class="text-center">Välj ett datum</h3>
-            <input type="text" name="name" class="form-control mb-2" placeholder="Name">
-            <input type="email" name="email" class="form-control mb-2" placeholder="Email">
-            <input type="date" name="date" id="datePicker" class="form-control mb-2">
+            <h3 class="text-center">Bokning</h3>
+            <input type="text" name="name" class="form-control mb-2" placeholder="Name" required>
+            <input type="email" name="email" class="form-control mb-2" placeholder="Email" required>
+            <input type="date" name="date" id="datePicker" class="form-control mb-2" required>
     
             <div id="timeSlots" class="d-flex flex-wrap justify-content-center gap-2"></div>
     
-            <input type="hidden" name="time" id="selectedTime">
+            <input type="hidden" name="time" id="selectedTime" required>
     
             <!-- Select the number of people (drivers) -->
             <label for="numPeople">Antal förare:</label>
@@ -42,7 +42,7 @@
 
             <div id="gokartContainer"></div>
 
-            <button type="submit" class="submit-btn">Nästa</button>
+            <button type="submit" class="submit-btn">Boka</button>
           </form>
         </div>
     </div>

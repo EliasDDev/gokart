@@ -13,6 +13,7 @@
 html, body {
     height: 100%;
     margin: 0;
+    overflow: hidden; /* Förhindra onödig scroll */
     background-color: #f8f9fa; /* Keeps the bg-light effect */
 }
 
@@ -22,7 +23,7 @@ html, body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh; /* Makes sure it takes full screen height */
+    min-height: 100vh; /* Ändra från height: 100vh */
 }
 
 /* Style the form */
@@ -46,6 +47,7 @@ html, body {
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s, transform 0.2s;
+    margin-top: 20px; /* Justera värdet efter behov */
 }
 
 /* Button hover effect */
@@ -53,3 +55,4 @@ html, body {
     background-color: #0056b3; 
     transform: scale(1.05);
 }
+
