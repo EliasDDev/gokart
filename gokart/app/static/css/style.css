@@ -36,26 +36,37 @@ html, body {
 }
 
 /* Position the first image */
-.image-container {
+.first-image {
     position: absolute;
     top: 125px; /* Keeps the first image below the header */
     left: 0;
     margin-left: 20px;
 }
 
-/* Make both images responsive */
-.image-container img {
-    width: 100%;
-    max-width: 300px;  /* Justera storleken vid behov */
+/* Position the second image below the first one */
+/* Container for the second image */
+.second-image {
+    position: absolute;
+    top: 450px; /* Justera efter behov */
+    left: 20px;
+    width: 300px; /* Matchar första bilden */
     height: auto;
-    border-radius: 15px;  /* Gör hörnen rundare, justera värdet för att ändra rundningen */
+    background-color: #797B7D; /* Färgen mitt emellan */
+    padding: 10px; /* Utrymme runt bilden */
+    border-radius: 15px; /* Rundade hörn */
+    border: 2px solid black; /* Svart kant */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Optional: Space between images */
-.image-container {
-    margin-bottom: 20px;  /* Add space between the two images */
+/* Make both images responsive and round corners */
+.first-image img, .second-image img {
+    width: 100%;
+    max-width: 300px; /* Adjust size */
+    height: auto;
+    border-radius: 15px; /* Rounds the corners */
 }
-
 
 /* Button styling */
 .submit-btn {
