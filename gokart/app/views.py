@@ -8,6 +8,12 @@ from datetime import time
 def home(request):
     return render(request, "index.html")
 
+def success(request):
+    return render(request, "success.html")
+
+def failed(request):
+    return render(request, "failed.html")
+
 def data(request):
     bookings = Booking.objects.prefetch_related('drivers_set__gokart').all().order_by('date', 'time')
     return render(request, 'data.html', {'bookings': bookings})
@@ -42,9 +48,13 @@ def book_slot(request):
         time = request.POST.get("time")
         num_people = int(request.POST.get("num_people"))  # Number of people
 
+        if time is None or time == 0 or time == "":
+            return redirect("failed")
+
         # Check if the slot is available
         if Booking.objects.filter(date=date, time=time).exists():
-            return JsonResponse({"error": "Slot already booked"}, status=400)
+            return redirect("failed")
+            #return JsonResponse({"error": "Slot already booked"}, status=400)
 
         customer, created = Customer.objects.get_or_create(email=email, defaults={'name': name})
 
@@ -57,4 +67,5 @@ def book_slot(request):
             gokart = Gokart.objects.get(id=gokart_id)
             Drivers.objects.create(gokart=gokart, booking=booking)
 
-        return JsonResponse({"success": "Booking confirmed"})
+        return redirect("success")
+        #return JsonResponse({"success": "Booking confirmed"})
