@@ -35,17 +35,27 @@ html, body {
     max-width: 350px;
 }
 
-/* Image styling */
+/* Position the first image */
 .image-container {
-    margin-left: 20px; /* Adds space between form and image */
+    position: absolute;
+    top: 125px; /* Keeps the first image below the header */
+    left: 0;
+    margin-left: 20px;
 }
 
-/* Make the image responsive and ensure it doesn't exceed a certain width */
+/* Make both images responsive */
 .image-container img {
-    width: 100%;        /* Makes the image take up 100% of the parent width */
-    max-width: 400px;   /* Sets the max width for the image */
-    height: auto;       /* Maintains the aspect ratio of the image */
+    width: 100%;
+    max-width: 300px;  /* Justera storleken vid behov */
+    height: auto;
+    border-radius: 15px;  /* Gör hörnen rundare, justera värdet för att ändra rundningen */
 }
+
+/* Optional: Space between images */
+.image-container {
+    margin-bottom: 20px;  /* Add space between the two images */
+}
+
 
 /* Button styling */
 .submit-btn {
@@ -166,4 +176,5 @@ html, body {
     background-color: #c82333; /* Mörkare röd vid hover */
     border-color: #bd2130; /* Mörkare kant vid hover */
 }
+
 
