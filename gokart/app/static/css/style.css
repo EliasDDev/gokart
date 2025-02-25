@@ -167,16 +167,3 @@ html, body {
     border-color: #bd2130; /* Mörkare kant vid hover */
 }
 
-.image-container {
-    max-width: 100%;  /* Gör så att container inte överskrider bredden på föräldern */
-    display: flex;
-    justify-content: center;  /* Centrerar bilden horisontellt */
-    align-items: center;      /* Centrerar bilden vertikalt om du har en specifik höjd */
-    margin: 20px 0;  /* Lite utrymme runt containern */
-}
-
-.responsive-image {
-    max-width: 100%;  /* Gör bilden responsiv så att den inte överskrider sin container */
-    height: auto;     /* Behåller bildens proportioner */
-    border-radius: 8px;  /* Gör hörnen runda (valfritt) */
-}
