@@ -9,34 +9,45 @@
     color: white;
 }
 
-/* Ensure full-page height and remove default margins */
+/* Full height layout and no default margins */
 html, body {
     height: 100%;
     margin: 0;
-    overflow: hidden; /* Förhindra onödig scroll */
-    background-color: #f8f9fa; /* Keeps the bg-light effect */
+    overflow: hidden;
+    background-color: #f8f9fa;
 }
 
-/* Center the form container */
+/* Flexbox container to align form and image */
 .form-container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    min-height: 100vh; /* Ändra från height: 100vh */
+    align-items: center;
+    min-height: 100vh; /* Full height */
 }
 
-/* Style the form */
+/* Form card style */
 .form-card { 
     background: white;
     padding: 25px;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 350px; /* Responsive width */
+    max-width: 350px;
 }
 
-/* Style the submit button */
+/* Image styling */
+.image-container {
+    margin-left: 20px; /* Adds space between form and image */
+}
+
+/* Make the image responsive and ensure it doesn't exceed a certain width */
+.image-container img {
+    width: 100%;        /* Makes the image take up 100% of the parent width */
+    max-width: 400px;   /* Sets the max width for the image */
+    height: auto;       /* Maintains the aspect ratio of the image */
+}
+
+/* Button styling */
 .submit-btn {
     width: 100%;
     padding: 12px;
@@ -47,12 +58,11 @@ html, body {
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s, transform 0.2s;
-    margin-top: 20px; /* Justera värdet efter behov */
+    margin-top: 20px;
 }
 
-/* Button hover effect */
 .submit-btn:hover {
-    background-color: #0056b3; 
+    background-color: #0056b3;
     transform: scale(1.05);
 }
 
@@ -155,4 +165,18 @@ html, body {
 .btn-danger:hover {
     background-color: #c82333; /* Mörkare röd vid hover */
     border-color: #bd2130; /* Mörkare kant vid hover */
+}
+
+.image-container {
+    max-width: 100%;  /* Gör så att container inte överskrider bredden på föräldern */
+    display: flex;
+    justify-content: center;  /* Centrerar bilden horisontellt */
+    align-items: center;      /* Centrerar bilden vertikalt om du har en specifik höjd */
+    margin: 20px 0;  /* Lite utrymme runt containern */
+}
+
+.responsive-image {
+    max-width: 100%;  /* Gör bilden responsiv så att den inte överskrider sin container */
+    height: auto;     /* Behåller bildens proportioner */
+    border-radius: 8px;  /* Gör hörnen runda (valfritt) */
 }
