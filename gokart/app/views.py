@@ -74,11 +74,16 @@ def book_slot(request):
         #return JsonResponse({"success": "Booking confirmed"})
 
 def cancel_booking(request):
-    if (request.method == "POST"):
-        customer_id = request.POST.get("customer_id")
-        # Fetch and delete the booking
-        customer = get_object_or_404(Customer, id=customer_id)
-        customer.delete()
+    if request.method == "POST":
+        booking_id = request.POST.get("booking_id")
+        booking = get_object_or_404(Booking, id=booking_id)
+        customer = booking.customer
+        
+        booking.delete()
+        
+        if not Booking.objects.filter(customer=customer).exists():
+            customer.delete()
+        
         return redirect("data")
     
     return HttpResponse("Invalid request", status=400)
