@@ -29,6 +29,7 @@
                             <th class="text-center">Email</th>
                             <th class="text-center">Tid</th>
                             <th class="text-center">Förare</th>
+                            <th class="text-center">Avbokning</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -45,6 +46,13 @@
                                             <li>No drivers assigned</li>
                                         {% endfor %}
                                     </ul>
+                                </td>
+                                <td class="text-center">
+                                    <form method="POST" action="{% url 'cancel_booking' %}">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="customer_id" value="{{booking.customer.id}}">
+                                        <button type="submit" class="btn btn-danger">Avboka</button>
+                                    </form>
                                 </td>
                             </tr>
                         {% endfor %}

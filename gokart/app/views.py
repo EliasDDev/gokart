@@ -1,7 +1,8 @@
-from django.shortcuts import render, redirect
-from django.http import JsonResponse
+from django.shortcuts import render, redirect, get_object_or_404, redirect
+from django.http import JsonResponse, HttpResponse
 from .models import Customer, Gokart, Booking, Drivers
 from datetime import time
+from django.contrib import messages
 
 # Create your views here.
 
@@ -49,10 +50,12 @@ def book_slot(request):
         num_people = int(request.POST.get("num_people"))  # Number of people
 
         if time is None or time == 0 or time == "":
+            messages.error(request, "Ingen vald tid hittad för bokningen. Vänligen försök igen.")
             return redirect("failed")
 
         # Check if the slot is available
         if Booking.objects.filter(date=date, time=time).exists():
+            messages.error(request, "Tiden du angav är tyvärr redan uppbokad, vänligen försök igen med en annan tid.")
             return redirect("failed")
             #return JsonResponse({"error": "Slot already booked"}, status=400)
 
@@ -69,3 +72,13 @@ def book_slot(request):
 
         return redirect("success")
         #return JsonResponse({"success": "Booking confirmed"})
+
+def cancel_booking(request):
+    if (request.method == "POST"):
+        customer_id = request.POST.get("customer_id")
+        # Fetch and delete the booking
+        customer = get_object_or_404(Customer, id=customer_id)
+        customer.delete()
+        return redirect("data")
+    
+    return HttpResponse("Invalid request", status=400)

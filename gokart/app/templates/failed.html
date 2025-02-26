@@ -18,7 +18,13 @@
     <div class="failed-container">
         <div class="failed-icon">❌</div>
         <h1 class="failed-title">Bokningen Misslyckades</h1>
-        <p>Någonting gick fel.</p>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-danger">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
         <a href="{% url 'home' %}" class="btn btn-danger mt-3">Gå tillbaka</a>
     </div>
 
