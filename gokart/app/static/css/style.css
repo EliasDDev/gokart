@@ -9,12 +9,14 @@
     color: white;
 }
 
-/* Full height layout and no default margins */
-html, body {
-    height: 100%;
+.main-page {
+    background-color: #eaeafc; /* Grå bakgrund för hela sidan */
     margin: 0;
-    overflow: hidden;
-    background-color: #f8f9fa;
+    height: 100vh; /* Full höjd */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Placera innehållet från toppen */
+    text-align: center;
 }
 
 /* Flexbox container to align form and image */
@@ -25,12 +27,11 @@ html, body {
     min-height: 100vh; /* Full height */
 }
 
-/* Form card style */
 .form-card { 
     background: white;
     padding: 25px;
     border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 12px 35px rgba(0, 0, 0, 0.3);
     width: 100%;
     max-width: 350px;
 }
@@ -51,10 +52,6 @@ html, body {
     left: 20px;
     width: 300px; /* Matchar första bilden */
     height: auto;
-    background-color: #797B7D; /* Färgen mitt emellan */
-    padding: 10px; /* Utrymme runt bilden */
-    border-radius: 15px; /* Rundade hörn */
-    border: 2px solid black; /* Svart kant */
     display: flex;
     justify-content: center;
     align-items: center;
