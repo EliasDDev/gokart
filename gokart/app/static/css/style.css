@@ -9,60 +9,14 @@
     color: white;
 }
 
-.main-page {
-    background-color: #eaeafc; /* Grå bakgrund för hela sidan */
-    margin: 0;
-    height: 100vh; /* Full höjd */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; /* Placera innehållet från toppen */
-    text-align: center;
-}
-
-/* Flexbox container to align form and image */
-.form-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh; /* Full height */
-}
-
-.form-card { 
+.form-card {
     background: white;
     padding: 25px;
     border-radius: 10px;
     box-shadow: 0px 12px 35px rgba(0, 0, 0, 0.3);
     width: 100%;
-    max-width: 350px;
-}
-
-/* Position the first image */
-.first-image {
-    position: absolute;
-    top: 125px; /* Keeps the first image below the header */
-    left: 0;
-    margin-left: 20px;
-}
-
-/* Position the second image below the first one */
-/* Container for the second image */
-.second-image {
-    position: absolute;
-    top: 450px; /* Justera efter behov */
-    left: 20px;
-    width: 300px; /* Matchar första bilden */
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Make both images responsive and round corners */
-.first-image img, .second-image img {
-    width: 100%;
-    max-width: 300px; /* Adjust size */
-    height: auto;
-    border-radius: 15px; /* Rounds the corners */
+    max-width: 420px;
+    margin-top: 50px;
 }
 
 /* Button styling */
