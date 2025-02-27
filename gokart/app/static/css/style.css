@@ -1,3 +1,12 @@
+body {
+    /* Länk till gradient generator: https://cssgradient.io */
+    background: rgb(255,255,255);
+    background: -moz-radial-gradient(circle, rgba(255,255,255,1) 25%, rgba(186,194,204,1) 100%);
+    background: -webkit-radial-gradient(circle, rgba(255,255,255,1) 25%, rgba(186,194,204,1) 100%);
+    background: radial-gradient(circle, rgba(255,255,255,1) 25%, rgba(186,194,204,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#bac2cc",GradientType=1);
+}
+
 .time-btn {
     margin: 5px;
     padding: 10px;
@@ -14,10 +23,20 @@
     padding: 25px;
     border-radius: 10px;
     box-shadow: 0px 12px 35px rgba(0, 0, 0, 0.3);
-    width: 100%;
-    max-width: 420px;
+    width: 400px;
+    margin: auto;
     margin-top: 50px;
 }
+
+@media only screen and (max-width: 750px) {
+    .form-card {
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0px 12px 35px rgba(0, 0, 0, 0.3);
+        width: 100%;
+    }
+  }
 
 /* Button styling */
 .submit-btn {
@@ -137,6 +156,14 @@
 .btn-danger:hover {
     background-color: #c82333; /* Mörkare röd vid hover */
     border-color: #bd2130; /* Mörkare kant vid hover */
+}
+
+.img-rounded {
+    border-radius: 10px;
+}
+
+.header {
+    box-shadow: 0px 12px 35px rgba(0, 0, 0, 0.3);
 }
 
 
