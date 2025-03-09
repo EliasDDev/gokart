@@ -1,5 +1,8 @@
 # Skolprojekt - Go-Kart-bokningswebbplats med Django som backend.
 
+### Ladda ner
+`git clone https://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@github.com/eliasddev/gokart.git`
+
 ### Skapa virtual environment och installera Django:
 #### Windows
 ```
