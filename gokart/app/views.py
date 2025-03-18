@@ -3,6 +3,9 @@ from django.http import JsonResponse, HttpResponse
 from .models import Customer, Gokart, Booking, Drivers
 from datetime import time
 from django.contrib import messages
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
 # Create your views here.
 
@@ -70,6 +73,8 @@ def book_slot(request):
             gokart = Gokart.objects.get(id=gokart_id)
             Drivers.objects.create(gokart=gokart, booking=booking)
 
+        send_booking_confirmation_mail(name, email, date, time)
+
         return redirect("success")
         #return JsonResponse({"success": "Booking confirmed"})
 
@@ -78,12 +83,38 @@ def cancel_booking(request):
         booking_id = request.POST.get("booking_id")
         booking = get_object_or_404(Booking, id=booking_id)
         customer = booking.customer
-        
+
         booking.delete()
-        
+
         if not Booking.objects.filter(customer=customer).exists():
             customer.delete()
-        
+
         return redirect("data")
-    
+
     return HttpResponse("Invalid request", status=400)
+
+# We are using https://app.mailersend.com as our SMTP host provider.
+def send_booking_confirmation_mail(name, mail, date, time):
+    # Email details
+    sender_email = "MS_62DvdC@trial-yzkq340vvvkld796.mlsender.net"
+    receiver_email = mail
+    password = "mssp.PyDKoSt.7dnvo4deo3rl5r86.NHJoMli"
+    subject = "Gokart booking confirmation"
+    body = f"Hello {name},\nWe have received a gokart booking for you on the {date} at {time}.\nHope to see you there.\nWould you like to cancel your booking?\nLink: TODO"
+
+    # Create the email message
+    message = MIMEMultipart()
+    message["From"] = sender_email
+    message["To"] = receiver_email
+    message["Subject"] = subject
+    message.attach(MIMEText(body, "plain"))
+
+    # Set up the SMTP server
+    smtp_server = "smtp.mailersend.net"
+    port = 587
+
+    # Send the email
+    with smtplib.SMTP(smtp_server, port) as server:
+        server.starttls()
+        server.login(sender_email, password)
+        server.sendmail(sender_email, receiver_email, message.as_string())
