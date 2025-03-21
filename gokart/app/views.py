@@ -6,6 +6,11 @@ from django.contrib import messages
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from django.conf import settings
+from .tokens import booking_cancellation_token
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.template.loader import render_to_string
+from django.contrib.auth.tokens import default_token_generator
 
 # Create your views here.
 
@@ -73,8 +78,10 @@ def book_slot(request):
             gokart = Gokart.objects.get(id=gokart_id)
             Drivers.objects.create(gokart=gokart, booking=booking)
 
-        send_booking_confirmation_mail(name, email, date, time)
+        send_booking_confirmation_mail(booking, name, email, date, time)
 
+        # Display a success message
+        messages.success(request, 'Din bokning har registrerats. Vi har skickat tid, datum och kvitto via epost. Vi ses snart.')
         return redirect("success")
         #return JsonResponse({"success": "Booking confirmed"})
 
@@ -93,14 +100,46 @@ def cancel_booking(request):
 
     return HttpResponse("Invalid request", status=400)
 
+def get_object_or_none(model, **kwargs):
+    try:
+        return model.objects.get(**kwargs)
+    except model.DoesNotExist:
+        return None
+
+def cancel_booking_from_email_link(request, booking_id, token):
+    # Fetch the booking by ID
+    booking = get_object_or_none(Booking, id=booking_id)
+    if booking is None:
+        # Invalid booking
+        messages.error(request, 'You have already canceled your booking.')
+        return redirect('failed')
+
+    # Verify the token
+    if booking_cancellation_token.check_token(booking, token):
+        # Token is valid, proceed with cancellation
+        booking.delete()
+
+        # Display a success message
+        messages.success(request, 'Your booking has been successfully cancelled.')
+        return redirect('success')
+    else:
+        # Invalid token
+        messages.error(request, 'The cancellation link is invalid or has expired.')
+        return redirect('failed')
+
 # We are using https://app.mailersend.com as our SMTP host provider.
-def send_booking_confirmation_mail(name, mail, date, time):
+def send_booking_confirmation_mail(booking, name, mail, date, time):
+    # Generate the token for the booking
+    token = booking_cancellation_token.make_token(booking)
+    # Create the cancellation link with the token
+    cancellation_link = f"http://127.0.0.1:8000/cancel_booking/{booking.id}/{token}/"
+
     # Email details
     sender_email = "MS_62DvdC@trial-yzkq340vvvkld796.mlsender.net"
     receiver_email = mail
     password = "mssp.PyDKoSt.7dnvo4deo3rl5r86.NHJoMli"
     subject = "Gokart booking confirmation"
-    body = f"Hello {name},\nWe have received a gokart booking for you on the {date} at {time}.\nHope to see you there.\nWould you like to cancel your booking?\nLink: TODO"
+    body = f"Hello {name},\nWe have received a gokart booking for you on the {date} at {time}.\nHope to see you there.\nWould you like to cancel your booking?\nLink: {cancellation_link}"
 
     # Create the email message
     message = MIMEMultipart()

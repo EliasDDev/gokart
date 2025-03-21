@@ -10,4 +10,5 @@ urlpatterns = [
     path('get-gokarts/', views.get_gokarts, name='get_gokarts'),
     path("book-slot/", views.book_slot, name="book_slot"),
     path("cancel-booking/", views.cancel_booking, name="cancel_booking"),
+    path('cancel_booking/<int:booking_id>/<str:token>/', views.cancel_booking_from_email_link, name='cancel_booking_from_email_link'),
 ]
