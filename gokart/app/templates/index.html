@@ -19,68 +19,80 @@
 
     <link rel="stylesheet" href="../static/css/style.css">
 </head>
-<body>
-<div class="p-5 bg-dark text-white text-center header">
-    <h1>Gokart Väst</h1>
-    <p>Drop-in Öppettider</p>
-    <p>Ons-Fre 14:00-19:00, Lör 11:00-19:00, Sön 12:00-18:00</p>
-</div>
 
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-sm-4">
-            <h2>GOKART BANAN</h2>
-            <img src="../static/assets/image1.png" class="img-fluid" alt="Responsive image">
-            <h3 class="mt-4">Länkar</h3>
-            <ul class="nav nav-pills flex-column">
-                <li class="nav-item">
-                    <a class="nav-link" href="https://github.com/EliasDDev/gokart">Github <i class="fa fa-github" style="font-size:24px"></i></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'data' %}">Schema <i class="fa fa-calendar" style="font-size:20px"></i></i></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'admin:index' %}">Admin <i class="fa fa-user" style="font-size:20px"></i></a>
-                </li>
-            </ul>
-            <hr class="d-sm-none">
-        </div>
-        <div class="col-sm-8">
-            <h2>DROP-IN ELLER BOKA TID</h2>
-            <img src="../static/assets/image4.jpeg" class="img-fluid" alt="Responsive image">
-            <p></p>
-            <p>Gokartens historia började på 1950-talet i USA, när ingenjören Art Ingels skapade den första gokarten som en liten, öppen bil med en motor från en gräsklippare. Den blev snabbt populär som en rolig fritidsaktivitet och tävlingsform. På 1960-talet började gokarts tävlas på specialbyggda banor, och sporten växte snabbt globalt, med både amatörer och professionella förare. Under åren har gokartteknologin utvecklats, med förbättrade motorer, ramkonstruktioner och säkerhetsfunktioner, vilket har gjort gokartåkning till en populär sport både för nybörjare och erfarna förare. Idag används gokarts även som träningsplattform för många Formel 1-förare.</p>
-            <div class="form-card">
-                <form method="POST" action="{% url 'book_slot' %}">
-                    {% csrf_token %}
-                    <h3 class="text-center">Bokning</h3>
-                    <input type="text" name="name" class="form-control mb-2" placeholder="Namn" required>
-                    <input type="email" name="email" class="form-control mb-2" placeholder="Mejladress" required>
-                    <input type="date" name="date" id="datePicker" class="form-control mb-2" required>
-                    <div id="timeSlots" class="d-flex flex-wrap justify-content-center gap-2"></div>
-                    <input type="hidden" name="time" id="selectedTime" required>
-                    <div class="num-selector">
-                        <label for="numPeople" class="mt-3">Antal förare:</label>
-                        <input type="number" id="numPeople" name="num_people" min="1" max="10" value="1" required>
-                    </div>
-                    <div id="gokartContainer" class="d-flex flex-column align-items-center my-3"></div>
-                    <button type="submit" class="submit-btn">Boka</button>
-                </form>
+<body>
+    <div class="p-5 bg-dark text-white text-center header">
+        <h1>Gokart Väst</h1>
+        <p>Drop-in Öppettider</p>
+        <p>Ons-Fre 14:00-19:00, Lör 11:00-19:00, Sön 12:00-18:00</p>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-sm-4">
+                <h2>GOKART BANAN</h2>
+                <img src="../static/assets/image1.png" class="img-fluid" alt="Responsive image">
+                <h3 class="mt-4">Länkar</h3>
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/EliasDDev/gokart">Github <i class="fa fa-github"
+                                style="font-size:24px"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'data' %}">Schema <i class="fa fa-calendar"
+                                style="font-size:20px"></i></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'admin:index' %}">Admin <i class="fa fa-user"
+                                style="font-size:20px"></i></a>
+                    </li>
+                </ul>
+                <hr class="d-sm-none">
+            </div>
+            <div class="col-sm-8">
+                <h2>DROP-IN ELLER BOKA TID</h2>
+                <img src="../static/assets/image4.jpeg" class="img-fluid" alt="Responsive image">
+                <p></p>
+                <p>Gokartens historia började på 1950-talet i USA, när ingenjören Art Ingels skapade den första gokarten
+                    som en liten, öppen bil med en motor från en gräsklippare. Den blev snabbt populär som en rolig
+                    fritidsaktivitet och tävlingsform. På 1960-talet började gokarts tävlas på specialbyggda banor, och
+                    sporten växte snabbt globalt, med både amatörer och professionella förare. Under åren har
+                    gokartteknologin utvecklats, med förbättrade motorer, ramkonstruktioner och säkerhetsfunktioner,
+                    vilket har gjort gokartåkning till en populär sport både för nybörjare och erfarna förare. Idag
+                    används gokarts även som träningsplattform för många Formel 1-förare.</p>
+                <div class="form-card">
+                    <form method="POST" action="{% url 'book_slot' %}">
+                        {% csrf_token %}
+                        <h3 class="text-center">Bokning</h3>
+                        <input type="text" name="name" class="form-control mb-2" placeholder="Namn" required>
+                        <input type="email" name="email" class="form-control mb-2" placeholder="Mejladress" required>
+                        <input type="date" name="date" id="datePicker" class="form-control mb-2" required>
+                        <div id="timeSlots" class="d-flex flex-wrap justify-content-center gap-2"></div>
+                        <input type="hidden" name="time" id="selectedTime" required>
+                        <div class="num-selector">
+                            <label for="numPeople" class="mt-3">Antal förare:</label>
+                            <input type="number" id="numPeople" name="num_people" min="1" max="10" value="1" required>
+                        </div>
+                        <div id="gokartContainer" class="d-flex flex-column align-items-center my-3"></div>
+                        <button type="submit" class="submit-btn">Boka</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div class="mt-5 p-4 bg-dark text-white text-center">
-    <p><i class="fa fa-facebook-f" style="font-size:20px"></i> <i class="fa fa-twitter" style="font-size:20px"></i> <i class="fa fa-linkedin" style="font-size:20px"></i> <i class="fa fa-instagram" style="font-size:20px"></i></p>
-</div>
+    <div class="mt-5 p-4 bg-dark text-white text-center">
+        <p><i class="fa fa-facebook-f" style="font-size:20px"></i> <i class="fa fa-twitter" style="font-size:20px"></i>
+            <i class="fa fa-linkedin" style="font-size:20px"></i> <i class="fa fa-instagram" style="font-size:20px"></i>
+        </p>
+    </div>
 
-<script>
-    // Sätter dagens datum som minsta tillåtna datum
-    const today = new Date().toISOString().split('T')[0];
-    document.getElementById('datePicker').setAttribute('min', today);
-</script>
+    <script>
+        // Sätter dagens datum som minsta tillåtna datum
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('datePicker').setAttribute('min', today);
+    </script>
 
-<script src="../static/js/main.js"></script>
+    <script src="../static/js/main.js"></script>
 
 </body>
 
