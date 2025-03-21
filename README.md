@@ -29,7 +29,7 @@ python3 manage.py migrate
 python3 manage.py createsuperuser
 ```
 
-### Starta servern (localhost):
+### Starta servern:
 ```
 python3 manage.py runserver
 ```
