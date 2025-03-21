@@ -1,6 +1,6 @@
 # Skolprojekt - Go-Kart-bokningswebbplats med Django som backend.
 
-### Ladda ner
+### Ladda ner projektet:
 `git clone https://github.com/EliasDDev/gokart.git`
 
 ### Skapa virtual environment och installera Django:
@@ -11,7 +11,7 @@ python -m venv venv
 pip install django
 ```
 
-#### Ubuntu
+#### Linux
 ```
 python3 -m venv venv
 source venv/bin/activate
@@ -20,21 +20,19 @@ pip install django
 
 ### Uppdatera databasen:
 ```
-python manage.py makemigrations
-python manage.py migrate
+python3 manage.py makemigrations
+python3 manage.py migrate
 ```
 
 ### Skapa admin användare:
 ```
-python manage.py createsuperuser
+python3 manage.py createsuperuser
 ```
 
 ### Starta servern (localhost):
 ```
-python manage.py runserver
+python3 manage.py runserver
 ```
-
-### Starta servern:
 ```
-python manage.py runserver 0.0.0.0:8000
+python3 manage.py runserver 0.0.0.0:8000
 ```
