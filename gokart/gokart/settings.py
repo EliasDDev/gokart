@@ -76,8 +76,12 @@ WSGI_APPLICATION = 'gokart.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'gokart',
+        'USER': 'elias',
+        'PASSWORD': '1324',
+        'HOST': '213.66.63.31',
+        'PORT': '3306',
     }
 }
 
