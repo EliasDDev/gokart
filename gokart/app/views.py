@@ -86,9 +86,7 @@ def book_slot(request):
             )
             return redirect("failed")
 
-        customer, created = Customer.objects.get_or_create(
-            email=email, defaults={"name": name}
-        )
+        customer, created = Customer.objects.get_or_create(email=email, name=name)
 
         # Create a new booking instance, but don't save it yet
         booking = Booking.objects.create(date=date, time=time, customer=customer)
