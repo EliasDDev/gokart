@@ -160,7 +160,7 @@ def send_booking_confirmation_mail(booking, name, mail, date, time):
     token = booking_cancellation_token.make_token(booking)
 
     # Website URL hardcoded. Probably a better way of doing this.
-    cancellation_link = f"http://127.0.0.1:8000/cancel_booking/{booking.id}/{token}/"
+    cancellation_link = f"http://213.66.63.31:8000/cancel_booking/{booking.id}/{token}/"
 
     sender_email = "MS_62DvdC@trial-yzkq340vvvkld796.mlsender.net"
     receiver_email = mail
