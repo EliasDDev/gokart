@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404, redirect
+from django.db import IntegrityError
 from datetime import time
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -88,8 +89,15 @@ def book_slot(request):
 
         customer, created = Customer.objects.get_or_create(email=email, name=name)
 
-        # Create a new booking instance, but don't save it yet
-        booking = Booking.objects.create(date=date, time=time, customer=customer)
+        # Make an attempt to create the booking. If it fails, it means the booking already existed
+        try:
+            booking = Booking.objects.create(date=date, time=time, customer=customer)
+        except IntegrityError:
+            messages.error(
+                request,
+                "Tiden du angav är tyvärr redan uppbokad, vänligen försök igen med en annan tid.",
+            )
+            return redirect("failed")
 
         # Loop through the number of people and add the selected gokarts to the booking
         for i in range(1, num_people + 1):

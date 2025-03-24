@@ -17,6 +17,9 @@ class Booking(models.Model):
     time = models.TimeField(default="00:00")
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
 
+    class Meta:
+        unique_together = ('date', 'time')
+
 class Drivers(models.Model):
     id = models.AutoField(primary_key=True)
     gokart = models.ForeignKey(Gokart, on_delete=models.CASCADE)
