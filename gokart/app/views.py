@@ -168,9 +168,9 @@ def send_booking_confirmation_mail(booking, name, mail, date, time):
     # Website URL hardcoded. Probably a better way of doing this.
     cancellation_link = f"http://213.66.63.31:8000/cancel_booking/{booking.id}/{token}/"
 
-    sender_email = "MS_62DvdC@trial-yzkq340vvvkld796.mlsender.net"
+    sender_email = "MS_u5ADAT@trial-86org8e2r9kgew13.mlsender.net"
     receiver_email = mail
-    password = "mssp.PyDKoSt.7dnvo4deo3rl5r86.NHJoMli"
+    password = "mssp.HG6i2WH.jpzkmgqqww2g059v.GMfuZIW"
     subject = "Gokart booking confirmation"
     body = f"Hej {name},\n\nVi bekräftar härmed din gokartbokning den {date} kl. {time}.\n\nVi ser fram emot att välkomna dig vid detta tillfälle. Om du önskar att avboka din bokning, vänligen klicka på följande länk: {cancellation_link}.\n\nMed vänliga hälsningar,\nGokart-Skolprojekt AB"
 
